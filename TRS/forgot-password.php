@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta name="description" content="">
     <meta name="author" content="">
-    <title>WebApps - Login</title>
+    <title>Reset Password - WebApps</title>
 
     <!-- Favicon -->
     <link rel="apple-touch-icon" sizes="120x120" href="dashboard/assets/img/favicon/apple-touch-icon.png">
@@ -37,13 +37,13 @@
     <!-- Main content -->
     <div class="main-content">
         <!-- Header -->
-        <div class="header bg-gradient-primary py-7 py-lg-8 pt-lg-9" id="login">
+        <div class="header bg-gradient-primary py-7 py-lg-8 pt-lg-9" id="forgot-password">
             <div class="container">
                 <div class="header-body text-center mb-5">
                     <div class="row justify-content-center">
                         <div class="col-xl-5 col-lg-6 col-md-8 px-5">
                             <img src="./dashboard/assets/img/logo/logo.png" alt="brand-logo" width="100px">
-                            <h1 class="text-white">Login Account</h1>
+                            <h1 class="text-white">Reset Password</h1>
                             <!-- <p class="text-lead text-white">Use these awesome forms to login or create new account in your project for free.</p> -->
                         </div>
                     </div>
@@ -64,7 +64,8 @@
 
                         <div class="card-body px-lg-5 py-lg-5">
                             <div class="text-center mb-4">
-                                <small>Please enter your Email and Password.</small>
+                                <small>To reset your password, enter the registered email address and we will send you
+                                    the reset instruction on your email!</small>
                             </div>
                             <form role="form">
                                 <div class="form-group mb-3">
@@ -83,14 +84,8 @@
                                         <input class="form-control" placeholder="Password" type="password">
                                     </div>
                                 </div>
-                                <div class="custom-control custom-control-alternative custom-checkbox">
-                                    <input class="custom-control-input" id=" customCheckLogin" type="checkbox">
-                                    <label class="custom-control-label" for=" customCheckLogin">
-                                        <span>Remember me</span>
-                                    </label>
-                                </div>
                                 <div class="text-center">
-                                    <button type="button" class="btn btn-primary my-4">Sign in</button>
+                                    <button type="button" class="btn btn-primary my-4">Reset Password</button>
                                 </div>
                             </form>
                         </div>
