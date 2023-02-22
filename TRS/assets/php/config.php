@@ -31,4 +31,5 @@
     }
 
     $ob = new Database();
+    $next_video = "https://www.youtube.com/watch?v=4TWqnhYZ7LM&list=PL6u82dzQtlfso5EG5cHd3C56uB6IeZpxJ&index=3";
 ?>
