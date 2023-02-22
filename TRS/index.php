@@ -253,7 +253,7 @@
                     <div class="col-lg-5 col-md-7">
                         <div class="card bg-secondary border border-soft mb-0">
                             <div class="card-body px-lg-5 py-lg-5">
-                                <div class="text-center mb-4">
+                                <div class="text-center mb-4 text-success">
                                     <small>To reset your password, enter the registered email address and we will send
                                         you
                                         the reset instruction on your email!</small>
@@ -305,8 +305,8 @@
     <script src="dashboard/assets/vendor/jquery.scrollbar/jquery.scrollbar.min.js"></script>
     <script src="dashboard/assets/vendor/jquery-scroll-lock/dist/jquery-scrollLock.min.js"></script>
 
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/js/all.min.js"></script>
+    <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/js/all.min.js"></script> -->
     <script>
     $(document).ready(function() {
         $("#register-link").click(function() {
