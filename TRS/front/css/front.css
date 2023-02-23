@@ -17996,7 +17996,7 @@ a.text-gray-800:hover, a.text-gray-800:focus {
   h3 {
         page-break-after: avoid;
     }
-  @    page {
+  @page {
         size: a3;
     }
 
@@ -24681,7 +24681,7 @@ button.section-gray-800:focus {
 }
 
 .navbar-brand img.common {
-    height: 35px;
+    height: 70px;
 }
 
 .navbar-brand img {
