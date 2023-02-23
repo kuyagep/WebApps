@@ -39,7 +39,7 @@
         <!-- Login Form  -->
         <div id="login-box">
             <!-- Header -->
-            <div class="header bg-gradient-primary py-7 py-lg-8 pt-lg-9" id="login">
+            <div class="header bg-gradient-primary py-7 py-lg-8 pt-lg-3" id="login">
                 <div class="container">
                     <div class="header-body text-center mb-5">
                         <div class="row justify-content-center">
@@ -87,10 +87,10 @@
                                             <input class="form-control" placeholder="Password" type="password"
                                                 name="password" id="password">
                                         </div>
+                                        
                                     </div>
                                     <div class="custom-control custom-control-alternative custom-checkbox">
-                                        <input class="custom-control-input" id="customCheckLogin" type="checkbox"
-                                            name="rem">
+                                        <input class="custom-control-input" id="customCheckLogin" type="checkbox" >
                                         <label class="custom-control-label" for=" customCheckLogin">
                                             <span>Remember me</span>
                                         </label>
@@ -119,7 +119,7 @@
         <!-- Register Form  -->
         <div id="register-box" style="display: none;">
             <!-- Header -->
-            <div class="header bg-gradient-primary py-7 py-lg-8 pt-lg-9">
+            <div class="header bg-gradient-primary  py-lg-8 pt-lg-3">
                 <div class="container">
                     <div class="header-body text-center mb-5">
                         <div class="row justify-content-center">
@@ -228,7 +228,7 @@
         <!-- Forgot Password  -->
         <div id="forgot-box" style="display: none;">
             <!-- Header -->
-            <div class="header bg-gradient-primary py-7 py-lg-8 pt-lg-9" >
+            <div class="header bg-gradient-primary py-7 py-lg-8 pt-lg-9">
                 <div class="container">
                     <div class="header-body text-center mb-5">
                         <div class="row justify-content-center">
@@ -264,11 +264,13 @@
                                             <div class="input-group-prepend">
                                                 <span class="input-group-text"><i class="ni ni-email-83"></i></span>
                                             </div>
-                                            <input class="form-control" placeholder="Email" type="email" id="femail" name="email" required>
+                                            <input class="form-control" placeholder="Email" type="email" id="femail"
+                                                name="email" required>
                                         </div>
                                     </div>
                                     <div class="text-center">
-                                        <button type="button " id="forgot-btn" class="btn btn-primary my-4">Reset Password</button>
+                                        <button type="button " id="forgot-btn" class="btn btn-primary my-4">Reset
+                                            Password</button>
                                     </div>
                                 </form>
                             </div>
