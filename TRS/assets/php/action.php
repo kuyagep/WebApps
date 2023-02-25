@@ -1,5 +1,5 @@
 <?php
-    if(isset($_POST['action']) && $_POST['register'] == "register"){
-        print_r();
+    if(isset($_POST['action']) && $_POST['action'] == "register"){
+        print_r($_POST);
     }
 ?>

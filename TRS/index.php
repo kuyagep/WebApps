@@ -480,7 +480,7 @@
             if($("#register-form")[0].checkValidity()){
                 e.preventDefault();
                 $("#register-btn").val('Please Wait...');
-                if($("#rpassword") != $("#cpassword")){
+                if($("#rpassword").val() != $("#cpassword").val()){
                     $("#passError").text("* Password did not matched!");
                     $("#register-btn").val('Sign Up');
                 }else{
@@ -491,6 +491,7 @@
                         data: $("#register-form").serialize() + '&action=register',
                         success: function(response){
                             console.log(response);
+                            $("#register-btn").val('Sign Up');
                         }
 
                     });
