@@ -282,7 +282,7 @@
                                                 <span class="input-group-text"><i class="ni ni-hat-3"></i></span>
                                             </div>
                                             <input class="form-control" placeholder="Name" type="text" id="name"
-                                                name="name">
+                                                name="name" required>
                                         </div>
                                     </div>
                                     <div class="form-group">
@@ -291,7 +291,7 @@
                                                 <span class="input-group-text"><i class="ni ni-email-83"></i></span>
                                             </div>
                                             <input class="form-control" placeholder="Email" type="email" id="remail"
-                                                name="remail">
+                                                name="remail" required>
                                         </div>
                                     </div>
                                     <div class="form-group">
@@ -301,7 +301,7 @@
                                                         class="ni ni-lock-circle-open"></i></span>
                                             </div>
                                             <input class="form-control" placeholder="Password" type="password"
-                                                id="rpassword" name="rpassword" minlength="5">
+                                                id="rpassword" name="rpassword" minlength="5" required>
                                         </div>
                                     </div>
                                     <div class="form-group">
@@ -311,7 +311,7 @@
                                                         class="ni ni-lock-circle-open"></i></span>
                                             </div>
                                             <input class="form-control" placeholder="Confirm-Password" type="password"
-                                                id="cpassword" name="cpassword" minlength="5">
+                                                id="cpassword" name="cpassword" minlength="5" required>
                                         </div>
                                     </div>
                                     <div class="form-group">
@@ -471,6 +471,10 @@
             $("#login-box").show();
             $("#forgot-box").hide();
         });
+
+        //Register Ajax Request
+
+
     });
     </script>
 
