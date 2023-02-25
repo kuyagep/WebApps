@@ -269,7 +269,7 @@
                 <!-- Table -->
                 <div class="row justify-content-center">
                     <div class="col-lg-6 col-md-8">
-                        <div class="card bg-secondary border border-soft">
+                        <div class="card bg-dark border border-soft">
 
                             <div class="card-body px-lg-5 py-lg-5">
                                 <div class="text-center text-muted mb-4">
@@ -313,6 +313,9 @@
                                             <input class="form-control" placeholder="Confirm-Password" type="password"
                                                 id="cpassword" name="cpassword" minlength="5" required>
                                         </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <div class="text-danger font-weight-bold" id="passError"></div>
                                     </div>
                                     <div class="form-group">
                                         <div id="passError" class="text-danger font-weight-bolder"></div>
@@ -478,7 +481,7 @@
                 e.preventDefault();
                 $("#register-btn").val('Please Wait...');
                 if($("#rpassword") != $("cpassword")){
-                   
+                    $("#passError").text("* Password did not matched!");
                 }
             }
         });
