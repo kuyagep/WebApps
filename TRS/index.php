@@ -473,7 +473,9 @@
         });
 
         //Register Ajax Request
-
+        $("#register-btn").click(function(e){
+            alert("hello");
+        });
 
     });
     </script>
