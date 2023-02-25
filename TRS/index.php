@@ -275,7 +275,7 @@
                                 <div class="text-center text-muted mb-4">
                                     <small>Sign up with credentials</small>
                                 </div>
-                                <form role="form">
+                                <form role="form" id="register-form">
                                     <div class="form-group">
                                         <div class="input-group input-group-merge input-group-alternative mb-3">
                                             <div class="input-group-prepend">
@@ -332,7 +332,7 @@
                                         </div>
                                     </div>
                                     <div class="text-center">
-                                        <button type="button" class="btn btn-primary mt-4">Create account</button>
+                                        <button type="button" class="btn btn-primary mt-4" id="register-btn">Create account</button>
                                     </div>
                                 </form>
                             </div>
