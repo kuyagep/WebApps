@@ -335,7 +335,7 @@
                                         </div>
                                     </div>
                                     <div class="text-center">
-                                        <input type="button" class="btn btn-primary mt-4" value="Create Account" id="register-btn">
+                                        <input type="button" class="btn btn-primary mt-4" value="Sign Up" id="register-btn">
                                     </div>
                                 </form>
                             </div>
@@ -480,8 +480,20 @@
             if($("#register-form")[0].checkValidity()){
                 e.preventDefault();
                 $("#register-btn").val('Please Wait...');
-                if($("#rpassword") != $("cpassword")){
+                if($("#rpassword") != $("#cpassword")){
                     $("#passError").text("* Password did not matched!");
+                    $("#register-btn").val('Sign Up');
+                }else{
+                    $("#passError").text("");
+                    $.ajax({
+                        url: 'assets/php/action.php',
+                        method: 'post',
+                        data: $("#register-form").serialize() + '&action=register',
+                        success: function(response){
+                            console.log(response);
+                        }
+
+                    });
                 }
             }
         });
