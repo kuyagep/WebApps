@@ -474,7 +474,10 @@
 
         //Register Ajax Request
         $("#register-btn").click(function(e){
-            alert("hello");
+            if($("#register-form")[0].checkValidity()){
+                e.preventDefault();
+                $("#register-btn").val('Please Wait...');
+            }
         });
 
     });
