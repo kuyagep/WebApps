@@ -332,7 +332,7 @@
                                         </div>
                                     </div>
                                     <div class="text-center">
-                                        <button type="button" class="btn btn-primary mt-4" id="register-btn">Create account</button>
+                                        <input type="button" class="btn btn-primary mt-4" value="Create Account" id="register-btn">
                                     </div>
                                 </form>
                             </div>
@@ -477,6 +477,9 @@
             if($("#register-form")[0].checkValidity()){
                 e.preventDefault();
                 $("#register-btn").val('Please Wait...');
+                if($("#rpassword") != $("cpassword")){
+                   
+                }
             }
         });
 
