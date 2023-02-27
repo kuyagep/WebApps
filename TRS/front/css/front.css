@@ -1,30 +1,9 @@
-/*
 
-=========================================================
-* Impact Design System - v1.0.0
-=========================================================
-
-* Product Page: https://www.creative-tim.com/product/impact-design-system
-* Copyright 2010 Creative Tim (https://www.creative-tim.com)
-* Licensed under MIT (https://github.com/creativetimofficial/impact-design-system/blob/master/LICENSE.md)
-
-* Coded by Creative Tim
-
-=========================================================
-
-* The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
-
-*/
 @import url("https://fonts.googleapis.com/css?family=Nunito+Sans:300,400,600,700,800&display=swap");
 /*
  * 	Default theme - Owl Carousel CSS File
  */
-/*!
- * Bootstrap v4.3.1 (https://getbootstrap.com/)
- * Copyright 2011-2019 The Bootstrap Authors
- * Copyright 2011-2019 Twitter, Inc.
- * Licensed under MIT (https://github.com/twbs/bootstrap/blob/master/LICENSE)
- */
+
 :root {
     --blue: #5e72e4;
     --indigo: #31316A;
@@ -32419,6 +32398,8 @@ textarea[resize="horizontal"] {
         margin-top: 1rem;
     }
 }
+
+
 
 /**
  * = Profile cards
