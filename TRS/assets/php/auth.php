@@ -11,13 +11,13 @@ class Auth extends Database{
     }
 
     //Check if user already register
-    public function user_exist($email){
+    public function user_exist($email){ 
         $sql = "SELECT email FROM users WHERE email = :email";
         $stmt =$this->conn->prepare($sql);
         // $stmt->bindParam('email', $email);
         $stmt->execute(['email'=>$email]);
         $result = $stmt->fetch(PDO::FETCH_ASSOC);
-
+        
         return $result;
     }
 }

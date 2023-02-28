@@ -33,7 +33,6 @@
             $data = stripcslashes($data);
             $data = htmlspecialchars($data);
             return $data;
-
         }
 
         //Error Success Message Alert

@@ -330,13 +330,6 @@
         </div>
         <!-- Forgot Password End    -->
 
-
-
-
-
-
-
-
     </div>
     <!-- Footer -->
 

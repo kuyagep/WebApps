@@ -2,7 +2,7 @@
     session_start();
     require_once('auth.php');
     $user = new Auth();
-    if($_SERVER["REQUEST_METHOD"] == "POST" && $_POST['action'] == 'register'){
+    if($_SERVER["REQUEST_METHOD"] == "POST" ){
         print_r($_POST);
         $name = $user->check_input($_POST['name']);
         $email = $user->check_input($_POST['email']);
