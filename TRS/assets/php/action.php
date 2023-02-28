@@ -1,5 +1,5 @@
 <?php
-
+    session_start();
     require_once 'auth.php';
     $user = new Auth();
     if(isset($_POST['action']) && $_POST['action'] == "register"){
@@ -11,9 +11,11 @@
         if($user->user_exist($email)){
             echo $user->showMessage('warning','This E-Mail is already registered!');
         }else{
-            if($user->register($name,$email,$password)){
+            if($user->register($name,$email,$hash_pass)){
                 echo 'register';
                 $_SESSION['user'] = $email;
+            }else{
+                echo $user->showMessage('danger','Something went wrong! try again later!');
             }
         }
 

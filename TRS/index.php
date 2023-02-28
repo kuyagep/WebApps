@@ -177,6 +177,7 @@
                                     <small>Sign up with credentials</small>
                                 </div>
                                 <form role="form" id="register-form">
+                                    <div id="regAlert"></div>
                                     <div class="form-group">
                                         <div class="input-group input-group-merge input-group-alternative mb-3">
                                             <div class="input-group-prepend">
@@ -214,9 +215,6 @@
                                             <input class="form-control" placeholder="Confirm-Password" type="password"
                                                 id="cpassword" name="cpassword" minlength="5" required>
                                         </div>
-                                    </div>
-                                    <div class="form-group">
-                                        <div class="text-danger font-weight-bold" id="passError"></div>
                                     </div>
                                     <div class="form-group">
                                         <div id="passError" class="text-danger font-weight-bolder"></div>
@@ -392,8 +390,13 @@
                         method: 'post',
                         data: $("#register-form").serialize() + '&action=register',
                         success: function(response) {
-                            console.log(response);
+                           
                             $("#register-btn").val('Sign Up');
+                            if(response === 'register'){
+                                window.location = './dashboard/';
+                            }else{
+                                $("#regAlert")
+                            }
                         }
 
                     });
