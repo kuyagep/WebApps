@@ -1,4 +1,4 @@
-<header class="header-global fixed-top bg-gray ">
+<header class="header-global fixed-top bg-black ">
         <nav id="navbar-main "
             class="navbar navbar-main navbar-expand-lg headroom py-lg-3 px-lg-6 navbar-light navbar-theme-default ">
             <div class="container my-3">

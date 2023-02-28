@@ -33,7 +33,15 @@
 
     <!-- Front CSS -->
     <link type="text/css" href="./front/css/front.css" rel="stylesheet">
+    <style>
+    .form-bg {
+        background-color: #161B22;
+    }
 
+    .btn-bg {
+        background-color: #29AC47;
+    }
+    </style>
 
 </head>
 
@@ -69,10 +77,10 @@
             <div class="container mt--9 pb-5 text-gray">
                 <div class="row justify-content-center">
                     <div class="col-lg-5 col-md-7">
-                        <div class="card bg-gray border rounded-4 border-soft mb-0 ">
+                        <div class="card form-bg  rounded-4  mb-0 ">
 
                             <div class="card-body px-lg-5 py-lg-5">
-                                <div class="text-center mb-4">
+                                <div class="text-center text-white mb-4">
                                     <small>Please enter your Email and Password.</small>
                                 </div>
                                 <form role="form">
@@ -103,7 +111,7 @@
                                                 <input class="custom-control-input" id="customCheckLogin"
                                                     type="checkbox" value="remember_me">
                                                 <!-- <input class="custom-control-input" type="checkbox" value="remember-me"> -->
-                                                <label class="custom-control-label" for="customCheckLogin">
+                                                <label class="text-white custom-control-label" for="customCheckLogin">
                                                     <span>Remember me</span>
                                                 </label>
                                             </div>
@@ -111,7 +119,7 @@
                                         </div>
                                         <div class="col-6 text-right">
                                             <!-- <a href="#" class="text-gray" id="register-link"><small>Register</small></a> -->
-                                            <a href="#" class="text-gray" id="forgot-link"><small>Forgot
+                                            <a href="#" class="text-white" id="forgot-link"><small>Forgot
                                                     password?</small></a>
 
                                         </div>
@@ -127,7 +135,7 @@
                                     <hr class="my-4">
                                     <div class="text-center">
                                         <button type="button"
-                                            class="w-100 mb-2 btn btn-lg  btn-white  animate-up-2 text-success"
+                                            class="w-100 mb-2 btn btn-lg  btn-success  animate-up-2 text-white"
                                             id="register-link"> <i
                                                 class="fas fa-paper-plane mr-2 "></i>Register</button>
                                         <!-- <button type="button" class="btn btn-primary my-4" id="login-btn"> <i
@@ -170,13 +178,13 @@
                 <!-- Table -->
                 <div class="row justify-content-center">
                     <div class="col-lg-6 col-md-8">
-                        <div class="card bg-gray border border-soft">
+                        <div class="card form-bg border border-soft">
 
                             <div class="card-body px-lg-5 py-lg-5">
                                 <div class="text-center text-muted mb-4 text-white">
                                     <small>Sign up with credentials</small>
                                 </div>
-                                <form role="form" id="register-form">
+                                <form role="form" id="register-form" >
                                     <div id="regAlert"></div>
                                     <div class="form-group">
                                         <div class="input-group input-group-merge input-group-alternative mb-3">
@@ -240,15 +248,16 @@
 
                                     </div>
                                     <hr class="my-4">
-                                    <div class="text-center">
-                                        <button type="button"
-                                            class="w-100 mb-2 btn btn-lg  btn-white  animate-up-2 text-success"
-                                            id="login-link"> <i class="fas fa-sign-in-alt mr-2 "></i>Login</button>
-                                        <!-- <button type="button" class="btn btn-primary my-4" id="login-btn"> <i
+
+                                </form>
+                                <div class="text-center">
+                                    <button type="button"
+                                        class="w-100 mb-2 btn btn-lg  btn-success  animate-up-2 text-white"
+                                        id="login-link"> <i class="fas fa-sign-in-alt mr-2 "></i>Login</button>
+                                    <!-- <button type="button" class="btn btn-primary my-4" id="login-btn"> <i
                                                 class="fas fa-sign-in-alt mr-2"></i>Sign
                                             in</button> -->
-                                    </div>
-                                </form>
+                                </div>
                             </div>
                         </div>
 
@@ -284,7 +293,7 @@
             <div class="container mt--9 pb-5 text-gray">
                 <div class="row justify-content-center">
                     <div class="col-lg-5 col-md-7">
-                        <div class="card bg-gray border border-soft mb-0">
+                        <div class="card form-bg border border-soft mb-0">
                             <div class="card-body px-lg-5 py-lg-5">
                                 <div class="text-center mb-4 text-white">
                                     <small>To reset your password, enter the registered email address and we will send
@@ -379,26 +388,27 @@
         $("#register-btn").click(function(e) {
             if ($("#register-form")[0].checkValidity()) {
                 e.preventDefault();
+
                 $("#register-btn").val('Please Wait...');
                 if ($("#rpassword").val() != $("#cpassword").val()) {
                     $("#passError").text("* Password did not matched!");
-                    $("#register-btn").val('Sign Up');
+                    $("#register-btn").val('Register');
                 } else {
+                    
                     $("#passError").text("");
                     $.ajax({
                         url: 'assets/php/action.php',
                         method: 'post',
                         data: $("#register-form").serialize() + '&action=register',
                         success: function(response) {
-                           
-                            $("#register-btn").val('Sign Up');
-                            if(response === 'register'){
-                                window.location = './dashboard/';
-                            }else{
-                                $("#regAlert")
+                            $("#register-btn").val('Register');
+                            console.log(response);
+                            if (response === 'register') {
+                                window.location = 'home.php';
+                            } else {
+                                $("#regAlert").html(response);
                             }
                         }
-
                     });
                 }
             }

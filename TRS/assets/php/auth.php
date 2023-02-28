@@ -6,7 +6,7 @@ class Auth extends Database{
     public function register($name, $email, $password){
         $sql = "INSERT INTO users (name, email, password) VALUES (:name, :email, :pass)";
         $stmt = $this->conn->prepare($sql);
-        $stmt->execute(['name'=>$name, 'email'=>$email, 'pass'=>$password]);
+        $stmt->execute(['name'=>$name,'email'=>$email,'pass'=>$password]);
         return true;
     }
 
@@ -14,6 +14,7 @@ class Auth extends Database{
     public function user_exist($email){
         $sql = "SELECT email FROM users WHERE email = :email";
         $stmt =$this->conn->prepare($sql);
+        // $stmt->bindParam('email', $email);
         $stmt->execute(['email'=>$email]);
         $result = $stmt->fetch(PDO::FETCH_ASSOC);
 

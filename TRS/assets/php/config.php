@@ -23,7 +23,7 @@
                 $this->conn = new PDO($dsn, $this->username, $this->password, $options);
                 // echo "Connected!";
             } catch (PDOException $e) {
-                echo "Connection failed: " . $e->getMessage();
+                throw new PDOException($e->getMessage(), (int)$e->getCode());
             }
         }
 
@@ -36,7 +36,7 @@
 
         }
 
-        //Error Succes Message Alert
+        //Error Success Message Alert
         public function showMessage($type, $message){
                 return '<div class="alert alert-'.$type.' alert-dismissible">
                         <button type="button" class="close" data-dismiss="alert">&times;</button>
