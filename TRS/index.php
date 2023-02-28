@@ -217,7 +217,7 @@
                                         </div>
                                     </div>
                                     <div class="form-group">
-                                        <div id="passError" class="text-danger font-weight-bolder"></div>
+                                        <div id="passError" class="text-secondary font-weight-bolder"></div>
                                     </div>
                                     <!-- <div class="text-muted font-italic"><small>password strength: <span
                                                 class="text-success font-weight-700">strong</span></small></div> -->
