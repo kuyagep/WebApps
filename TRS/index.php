@@ -48,7 +48,7 @@
             <!-- Header -->
             <div class="header  py-8 py-lg-9 pt-lg-3" id="login">
                 <div class="container">
-                    <div class="header-body text-center mb-5">
+                    <div class="header-body text-center mb-3">
                         <div class="row justify-content-center">
                             <div class="col-xl-5 col-lg-6 col-md-8 px-5">
                                 <!-- <img src="./dashboard/assets/img/logo/logo.png" alt="brand-logo" width="100px"> -->
@@ -69,10 +69,10 @@
             <div class="container mt--9 pb-5 text-gray">
                 <div class="row justify-content-center">
                     <div class="col-lg-5 col-md-7">
-                        <div class="card bg-dark border border-soft mb-0">
+                        <div class="card bg-gray border rounded-4 border-soft mb-0 shadow">
 
                             <div class="card-body px-lg-5 py-lg-5">
-                                <div class="text-center mb-4 text-white">
+                                <div class="text-center mb-4">
                                     <small>Please enter your Email and Password.</small>
                                 </div>
                                 <form role="form">
@@ -96,30 +96,44 @@
                                         </div>
 
                                     </div>
+                                    <div class="row mt-3">
+                                        <div class="col-6">
+                                            <!-- <a href="#" class="text-gray" id="forgot-link"><small>Forgot password?</small></a> -->
+
+                                        </div>
+                                        <div class="col-6 text-right">
+                                            <!-- <a href="#" class="text-gray" id="register-link"><small>Register</small></a> -->
+                                            <a href="#" class="text-gray" id="forgot-link"><small>Forgot
+                                                    password?</small></a>
+
+                                        </div>
+                                    </div>
                                     <div class="custom-control custom-control-alternative custom-checkbox">
-                                        <input class="custom-control-input" id="customCheckLogin" type="checkbox" checked>
-                                        <label class="custom-control-label" for=" customCheckLogin">
-                                            <span class="text-white">Remember me</span>
-                                        </label>
+                                        <!-- <input class="custom-control-input" id="customCheckRegister" type="checkbox" value="remember_me"> -->
+                                        <input class="custom-control-input" type="checkbox" value="remember-me">
+                                        <!-- <label class="custom-control-label" for=" customCheckLogin">
+                                            <span >Remember me</span>
+                                        </label> -->
                                     </div>
                                     <div class="text-center">
-                                        <button type="button" class="btn btn-primary my-4" id="login-btn"> <i
-                                                class="fas fa-sign-in-alt mr-2"></i>Sign
+                                        <button type="button" class="w-100  btn btn-lg  btn-primary mt-3 animate-up-2"
+                                            id="login-btn"> <i class="fas fa-sign-in-alt mr-2"></i>Sign
                                             in</button>
+                                        <!-- <button type="button" class="btn btn-primary my-4" id="login-btn"> <i
+                                                class="fas fa-sign-in-alt mr-2"></i>Sign
+                                            in</button> -->
+                                    </div>
+                                    <hr class="my-4">
+                                    <div class="text-center">
+                                        <button type="button"
+                                            class="w-100 mb-2 btn btn-lg  btn-white  animate-up-2 text-success"
+                                            id="register-link"> <i
+                                                class="fas fa-paper-plane mr-2 "></i>Register</button>
+                                        <!-- <button type="button" class="btn btn-primary my-4" id="login-btn"> <i
+                                                class="fas fa-sign-in-alt mr-2"></i>Sign
+                                            in</button> -->
                                     </div>
                                 </form>
-                            </div>
-                        </div>
-                        <div class="row mt-3">
-                            <div class="col-6">
-                                <!-- <a href="#" class="text-gray" id="forgot-link"><small>Forgot password?</small></a> -->
-                                <a href="#" class="btn btn-md btn-secondary animate-up-2" id="forgot-link"></i> Forgot
-                                    password?</a>
-                            </div>
-                            <div class="col-6 text-right">
-                                <!-- <a href="#" class="text-gray" id="register-link"><small>Register</small></a> -->
-                                <a href="#" class="btn btn-md btn-primary animate-up-2" id="register-link"><i
-                                        class="fas fa-paper-plane mr-2"></i> Register</a>
                             </div>
                         </div>
                     </div>
@@ -133,7 +147,7 @@
             <!-- Header -->
             <div class="header  py-8 py-lg-9 pt-lg-3">
                 <div class="container">
-                    <div class="header-body text-center mb-5">
+                    <div class="header-body text-center mb-3">
                         <div class="row justify-content-center">
                             <div class="col-xl-5 col-lg-6 col-md-8 px-5">
                                 <!-- <img src="./dashboard/assets/img/logo/logo.png" alt="brand-logo" width="100px"> -->
@@ -155,10 +169,10 @@
                 <!-- Table -->
                 <div class="row justify-content-center">
                     <div class="col-lg-6 col-md-8">
-                        <div class="card bg-dark border border-soft">
+                        <div class="card bg-gray border border-soft">
 
                             <div class="card-body px-lg-5 py-lg-5">
-                                <div class="text-center text-muted mb-4">
+                                <div class="text-center text-muted mb-4 text-white">
                                     <small>Sign up with credentials</small>
                                 </div>
                                 <form role="form" id="register-form">
@@ -210,33 +224,36 @@
                                                 class="text-success font-weight-700">strong</span></small></div> -->
                                     <div class="row my-4">
                                         <div class="col-12">
+                                            <!-- <small class="text-muted">By clicking Sign up, you agree to the terms of use.</small> -->
                                             <div class="custom-control custom-control-alternative custom-checkbox">
                                                 <input class="custom-control-input" id="customCheckRegister"
                                                     type="checkbox">
                                                 <label class="custom-control-label" for="customCheckRegister">
-                                                    <span class="text-muted">I agree with the <a href="#!">Privacy
+                                                    <span class="text-white">I agree with the <a href="#!">Privacy
                                                             Policy</a></span>
                                                 </label>
                                             </div>
                                         </div>
                                     </div>
                                     <div class="text-center">
-                                        <input type="button" class="btn btn-primary mt-4" value="Sign Up"
-                                            id="register-btn">
+                                        <input type="button" class="w-100 mb-2 btn btn-lg rounded-3 btn-primary mt-4"
+                                            value="Sign Up" id="register-btn">
+
+                                    </div>
+                                    <hr class="my-4">
+                                    <div class="text-center">
+                                        <button type="button"
+                                            class="w-100 mb-2 btn btn-lg  btn-white  animate-up-2 text-success"
+                                            id="login-link"> <i
+                                                class="fas fa-sign-in-alt mr-2 "></i>Login</button>
+                                        <!-- <button type="button" class="btn btn-primary my-4" id="login-btn"> <i
+                                                class="fas fa-sign-in-alt mr-2"></i>Sign
+                                            in</button> -->
                                     </div>
                                 </form>
                             </div>
                         </div>
-                        <div class="row mt-3">
-                            <!-- <div class="col-6">
-                                <a href="#" class="text-gray"><small>Forgot password?</small></a>
-                            </div> -->
-                            <div class="col-12 text-right">
-                                <!-- <a href="#" class="text-gray" id="login-link"><small>Login</small></a> -->
-                                <a href="#" class="btn btn-md btn-primary animate-up-2" id="login-link"> <i
-                                        class="fas fa-sign-in-alt mr-2"></i></i></i>Login</a>
-                            </div>
-                        </div>
+                        
                     </div>
                 </div>
             </div>
