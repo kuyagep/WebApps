@@ -8,7 +8,7 @@
         die;
     }
 
-    $current_user = $_SESSION['user'];
+    $current_email = $_SESSION['user'];
 
-    $data = $current_user->currentUser($email);
+    $data = $current_user->currentUser($current_email);
 ?>
