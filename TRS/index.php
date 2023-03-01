@@ -52,7 +52,7 @@
     <!-- Main content -->
     <div class="main-content ">
         <!-- Login Form  -->
-        <div id="login-box">
+        <div id="login-box" style="display: none;">
             <!-- Header -->
             <div class="header  py-8 py-lg-9 pt-lg-3" id="login">
                 <div class="container">
@@ -152,7 +152,7 @@
         <!-- Login Form End  -->
 
         <!-- Register Form  -->
-        <div id="register-box" style="display: none;">
+        <div id="register-box" >
             <!-- Header -->
             <div class="header  py-8 py-lg-9 pt-lg-3">
                 <div class="container">
@@ -243,8 +243,9 @@
                                         </div>
                                     </div>
                                     <div class="text-center">
-                                        <input type="button" class="w-100 mb-2 btn btn-lg rounded-3 btn-primary mt-4"
-                                            value="Register" id="register-btn">
+                                        
+                                            <button type="button" class="w-100 mb-2 btn btn-lg rounded-3 btn-primary mt-4"
+                                             id="register-btn">Register</button>
 
                                     </div>
                                     <hr class="my-4">
@@ -378,33 +379,72 @@
         });
 
         //Register Ajax Request
-        $("#register-btn").click(function(e) {
-            if ($("#register-form")[0].checkValidity()) {
-                e.preventDefault();
+        // $("#register-btn").click(function(e) {
+        //     if ($("#register-form")[0].checkValidity()) {
+        //         e.preventDefault();
 
-                $("#register-btn").val('Please Wait...');
-                if ($("#rpassword").val() != $("#cpassword").val()) {
-                    $("#passError").text("* Password did not matched!");
-                    $("#register-btn").val('Register');
-                } else {
+        //         $("#register-btn").val('Please Wait...');
+        //         if ($("#rpassword").val() != $("#cpassword").val()) {
+        //             $("#passError").text("* Password did not matched!");
+        //             $("#register-btn").val('Register');
+        //         } else {
                     
-                    $("#passError").text("");
-                    $.ajax({
-                        url: 'assets/php/action.php',
-                        method: 'post',
-                        data: $("#register-form").serialize() + '&action=register',
-                        success: function(response) {
-                            $("#register-btn").val('Register');
-                            console.log(response);
-                            if (response === 'register') {
-                                window.location = 'home.php';
-                            } else {
-                                $("#regAlert").html(response);
-                            }
-                        }
-                    });
-                }
+        //             $("#passError").text("");
+        //             $.ajax({
+        //                 url: 'assets/php/action.php',
+        //                 method: 'post',
+        //                 data: $("#register-form").serialize() + '&action=register',
+        //                 success: function(response) {
+        //                     $("#register-btn").val('Register');
+        //                     console.log(response);
+        //                     if (response === 'register') {
+        //                         window.location = 'home.php';
+        //                     } else {
+        //                         $("#regAlert").html(response);
+        //                     }
+        //                 }
+        //             });
+        //         }
+        //     }
+        // });
+        $("#register-btn").click(function(e) {
+            e.preventDefault();
+
+            var name = $('#name').val();
+            var email = $('#email').val();
+            var rpassword = $('#rpassword').val();
+            var cpassword = $('#cpassword').val();
+
+            $("#register-btn").html('<img src="dashboard/assets/img/loading/loading.gif" /> &nbsp; Signing In ...');
+            
+            if (name === '' || email === '' || rpassword === '' || cpassword === '' ) {
+                $("#regAlert").html('<div class="alert alert-danger">All fields are required!</div>');
+                //  $("#register-btn").val('Register');
+            } else {
+                
             }
+            if ($("#rpassword").val() != $("#cpassword").val()) {
+                $("#passError").text("* Password did not matched!");
+                $("#register-btn").val('Register');
+            } else {
+                
+                $("#passError").text("");
+                // $.ajax({
+                //     url: 'assets/php/action.php',
+                //     method: 'post',
+                //     data: $("#register-form").serialize() + '&action=register',
+                //     success: function(response) {
+                //         $("#register-btn").val('Register');
+                //         console.log(response);
+                //         if (response === 'register') {
+                //             window.location = 'home.php';
+                //         } else {
+                //             $("#regAlert").html(response);
+                //         }
+                //     }
+                // });
+            }
+            
         });
 
     });
