@@ -2,11 +2,12 @@
     session_start();
     require_once('auth.php');
     $user = new Auth();
-    if($_SERVER["REQUEST_METHOD"] == "POST" ){
-        print_r($_POST);
+
+    //Handle Registration
+    if($_SERVER["REQUEST_METHOD"] == "POST" && $_POST['action'] == 'register' ){
         $name = $user->check_input($_POST['name']);
-        $email = $user->check_input($_POST['email']);
-        $password = $user->check_input($_POST['password']);
+        $email = $user->check_input($_POST['remail']);
+        $password = $user->check_input($_POST['rpassword']);
         $hash_pass = password_hash($password, PASSWORD_DEFAULT);
 
         if($user->user_exist($email)){
@@ -21,4 +22,10 @@
         }
 
     }
+
+    //Handle Login
+    if($_SERVER["REQUEST_METHOD"] == "POST" && $_POST['action'] == 'login' ){
+        echo $user->showMessage('danger','Something went wrong! try again later!');
+    }
+    
 ?>

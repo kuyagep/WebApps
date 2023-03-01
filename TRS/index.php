@@ -57,7 +57,7 @@
     <!-- Main content -->
     <div class="main-content ">
         <!-- Login Form  -->
-        <div id="login-box" style="display: none;">
+        <div id="login-box">
             <!-- Header -->
             <div class="header  py-8 py-lg-9 pt-lg-3" id="login">
                 <div class="container">
@@ -88,7 +88,8 @@
                                 <div class="text-center text-white mb-4">
                                     <small>Please enter your Email and Password.</small>
                                 </div>
-                                <form role="form">
+                                <form role="form" method="post" id="login-form" action="#">
+                                    <div id="loginAlert"></div>
                                     <div class="form-group mb-3">
                                         <div class="input-group input-group-merge input-group-alternative">
                                             <div class="input-group-prepend">
@@ -111,31 +112,22 @@
                                     </div>
                                     <div class="row mt-3">
                                         <div class="col-6">
-                                            <!-- <a href="#" class="text-gray" id="forgot-link"><small>Forgot password?</small></a> -->
                                             <div class="custom-control custom-control-alternative custom-checkbox">
                                                 <input class="custom-control-input" id="customCheckLogin"
-                                                    type="checkbox" value="remember_me">
-                                                <!-- <input class="custom-control-input" type="checkbox" value="remember-me"> -->
+                                                    type="checkbox" value="remember_me" name="rem">
                                                 <label class="text-white custom-control-label" for="customCheckLogin">
                                                     <span>Remember me</span>
                                                 </label>
                                             </div>
-
                                         </div>
                                         <div class="col-6 text-right">
-                                            <!-- <a href="#" class="text-gray" id="register-link"><small>Register</small></a> -->
                                             <a href="#" class="text-white" id="forgot-link"><small>Forgot
                                                     password?</small></a>
-
                                         </div>
                                     </div>
                                     <div class="text-center">
-                                        <button type="button" class="w-100  btn btn-lg  btn-primary mt-3 animate-up-2"
-                                            id="login-btn"> <i class="fas fa-sign-in-alt mr-2"></i>Sign
-                                            in</button>
-                                        <!-- <button type="button" class="btn btn-primary my-4" id="login-btn"> <i
-                                                class="fas fa-sign-in-alt mr-2"></i>Sign
-                                            in</button> -->
+                                        <button type="button" class="w-100 btn btn-lg  btn-primary mt-3 animate-up-2"
+                                            id="login-btn"> Login</button>
                                     </div>
                                     <hr class="my-4">
                                     <div class="text-center">
@@ -144,9 +136,6 @@
                                             class="w-100 mb-2 btn btn-lg  btn-success  animate-up-2 text-white"
                                             id="register-link"> <i
                                                 class="fas fa-paper-plane mr-2 "></i>Register</button>
-                                        <!-- <button type="button" class="btn btn-primary my-4" id="login-btn"> <i
-                                                class="fas fa-sign-in-alt mr-2"></i>Sign
-                                            in</button> -->
                                     </div>
                                 </form>
                             </div>
@@ -158,7 +147,7 @@
         <!-- Login Form End  -->
 
         <!-- Register Form  -->
-        <div id="register-box">
+        <div id="register-box " style="display: none;">
             <!-- Header -->
             <div class="header  py-8 py-lg-9 pt-lg-3">
                 <div class="container">
@@ -262,9 +251,7 @@
                                     <button type="button" class="w-100 mb-2 btn btn-lg btn-success rounded-3 text-white"
                                         id="login-link">
                                         <i class="fas fa-sign-in-alt mr-2 "></i>Login</button>
-                                    <!-- <button type="button" class="btn btn-primary my-4" id="login-btn"> <i
-                                                class="fas fa-sign-in-alt mr-2"></i>Sign
-                                            in</button> -->
+
                                 </div>
                             </div>
                         </div>
@@ -386,80 +373,93 @@
         });
 
         //Register Ajax Request
-        // $("#register-btn").click(function(e) {
-        //     if ($("#register-form")[0].checkValidity()) {
-        //         e.preventDefault();
-
-        //         $("#register-btn").val('Please Wait...');
-        //         if ($("#rpassword").val() != $("#cpassword").val()) {
-        //             $("#passError").text("* Password did not matched!");
-        //             $("#register-btn").val('Register');
-        //         } else {
-
-        //             $("#passError").text("");
-        //             $.ajax({
-        //                 url: 'assets/php/action.php',
-        //                 method: 'post',
-        //                 data: $("#register-form").serialize() + '&action=register',
-        //                 success: function(response) {
-        //                     $("#register-btn").val('Register');
-        //                     console.log(response);
-        //                     if (response === 'register') {
-        //                         window.location = 'home.php';
-        //                     } else {
-        //                         $("#regAlert").html(response);
-        //                     }
-        //                 }
-        //             });
-        //         }
-        //     }
-        // });
         $("#register-btn").click(function(e) {
-            e.preventDefault();
+            if ($("#login-form")[0].checkValidity()) {
+                e.preventDefault();
 
-            var name = $("#name").val();
-            var remail = $("#remail").val();
-            var rpassword = $("#rpassword").val();
-            var cpassword = $("#cpassword").val();
-            $("#register-btn").html(
-                '<img src="dashboard/assets/img/loading/loading.gif"/> &nbsp; Please wait...');
+                var name = $("#name").val();
+                var remail = $("#remail").val();
+                var rpassword = $("#rpassword").val();
+                var cpassword = $("#cpassword").val();
+                $("#register-btn").html(
+                    '<img src="dashboard/assets/img/loading/loading.gif"/> &nbsp; Please wait...');
 
-            if (name === '' || remail === '' || rpassword === '' || cpassword === '') {
-                $("#register-btn").html('Register');
-                $("#regAlert").html(
-                    '<div class="alert alert-danger"><strong>All fields are required!</strong></div>'
-                );
-                exit();
-            } else {
-                if ($("#rpassword").val() != $("#cpassword").val()) {
-                    $("#passError").text("* Password did not matched!");
-                    $("#register-btn").val('Register');
+                if (name === '' || remail === '' || rpassword === '' || cpassword === '') {
+                    $("#register-btn").html('Register');
+                    $("#regAlert").html(
+                        '<div class="alert alert-danger"><strong>All fields are required!</strong></div>'
+                    );
+                    exit();
                 } else {
+                    if ($("#rpassword").val() != $("#cpassword").val()) {
+                        $("#passError").text("* Password did not matched!");
+                        $("#register-btn").val('Register');
+                    } else {
 
-                    $("#passError").text("");
-                    $.ajax({
-                        url: 'assets/php/action.php',
-                        method: 'post',
-                        data: {
-                                name: name,
-                                email: remail,
-                                pass: rpassword
-                        },
-                        success: function(response) {
-                            $("#register-btn").val('Register');
-                            console.log(response);
-                            if (response === 'register') {
-                                window.location = 'home.php';
-                            } else {
-                                $("#regAlert").html(response);
+                        $("#passError").text("");
+                        $.ajax({
+                            url: 'assets/php/action.php',
+                            method: 'post',
+                            data: $("#register-form").serialize() + '&action=register',
+                            success: function(response) {
+
+                                $("#register-btn").val('Register');
+
+                                if (response === 'register') {
+                                    $("#register-btn").html(
+                                        '<img src="dashboard/assets/img/loading/loading.gif"/> &nbsp; Please wait...'
+                                    );
+                                    setTimeout(' window.location.href = "home.php"; ',
+                                    2000);
+                                } else {
+                                    $("#regAlert").html(response);
+                                }
                             }
-                        }
-                    });
+                        });
+                    }
                 }
             }
-
-
         });
+
+        //Login Ajax Request
+        $("#login-btn").click(function(e)) {
+            if ($("#login-form")[0].checkValidity()) {
+                e.preventDefault();
+                var email = $("#email").val();
+                var password = $("#password").val();
+
+                $("#login-btn").html('<img src="dashboard/assets/img/loading/loading.gif"/> &nbsp; Please wait...');
+
+                if(email === '' && password === '' ){
+                    $("#login-btn").html('Login');
+                    $("#loginAlert").html(
+                        '<div class="alert alert-danger"><strong>All fields are required!</strong></div>'
+                    );
+                    exit();
+                }else{
+                    $.ajax({
+                            url: 'assets/php/action.php',
+                            method: 'post',
+                            data: $("#login-form").serialize() + '&action=login',
+                            success: function(response) {
+
+                                $("#login-btn").html('Login');
+
+                                if (response === 'login') {
+                                    $("#login-btn").html(
+                                        '<img src="dashboard/assets/img/loading/loading.gif"/> &nbsp; Please wait...'
+                                    );
+                                    setTimeout(' window.location.href = "home.php"; ',
+                                    2000);
+                                } else {
+                                    $("#loginAlert").html(response);
+                                }
+                            }
+                        });
+                }
+
+            }
+        }
 
     });
     </script>
