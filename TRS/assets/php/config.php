@@ -1,8 +1,8 @@
 <?php
 
     class Database{
-       const USERNAME = 'geperson.ph@gmail.com';
-       const PASSWORD = 'exvmezywmlyxksee';
+       const USERNAME = 'kuyagepofficial@gmail.com';
+       const PASSWORD = 'eczxptrdpzzgkuww';
 
         // Set database credentials
         private $host = "localhost";
