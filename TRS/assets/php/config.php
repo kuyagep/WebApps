@@ -1,7 +1,9 @@
 <?php
 
     class Database{
-       
+       const USERNAME = 'geperson.ph@gmail.com';
+       const PASSWORD = 'exvmezywmlyxksee';
+
         // Set database credentials
         private $host = "localhost";
         private $dbname = "webapps_db";

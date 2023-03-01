@@ -298,7 +298,7 @@
                                     <small>To reset your password, enter the registered email address and we will send
                                         you the reset instruction on your email!</small>
                                 </div>
-                                <form role="form" id="forgot-form" method="post">
+                                <form role="form" id="forgot-form">
                                     <div id="forgotAlert"></div>
                                     <div class="form-group mb-3">
                                         <div class="input-group input-group-merge input-group-alternative">
@@ -306,7 +306,7 @@
                                                 <span class="input-group-text"><i class="ni ni-email-83"></i></span>
                                             </div>
                                             <input class="form-control" placeholder="Email" type="email" id="femail"
-                                                name="email" required>
+                                                name="femail" required>
                                         </div>
                                     </div>
                                     <div class="text-center ">
@@ -468,10 +468,17 @@
         $("#forgot-btn").click(function(e){
             if ($("#forgot-form")[0].checkValidity()) {
                 e.preventDefault();
-
+                var femail = $("#femail").val();
                 $("#forgot-btn").html(
                 '<img src="dashboard/assets/img/loading/loading.gif"/> &nbsp; Please wait...');
-                $.ajax({
+
+                if (femail === '') {
+                    $("#forgot-btn").html('Reset Password');
+                    $("#forgotAlert").html(
+                        '<div class="alert alert-danger alert-dismissible"><button type="button" class="close" data-dismiss="alert">&times;</button><strong>Registered is required!</strong></div>'
+                    );
+                }else{
+                    $.ajax({
                     url: 'assets/php/action.php',
                     method: 'post',
                     data: $("#forgot-form").serialize() + '&action=forgot',
@@ -489,6 +496,7 @@
                         }
                     }
                 });
+                }
             }
         });
 
