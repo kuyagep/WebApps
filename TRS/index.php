@@ -299,6 +299,7 @@
                                         you the reset instruction on your email!</small>
                                 </div>
                                 <form role="form" id="forgot-form" method="post">
+                                    <div id="forgotAlert"></div>
                                     <div class="form-group mb-3">
                                         <div class="input-group input-group-merge input-group-alternative">
                                             <div class="input-group-prepend">
@@ -476,16 +477,15 @@
                     data: $("#forgot-form").serialize() + '&action=forgot',
                     success: function(response) {
 
-                        $("#login-btn").html('Login');
+                        $("#forgot-btn").html('Reset Password');
 
-                        if (response === 'login') {
-                            $("#login-btn").html(
-                                '<img src="dashboard/assets/img/loading/loading.gif"/> &nbsp; Please wait...'
-                                );
-                            setTimeout(' window.location.href = "home.php"; ', 2000);
+                        if (response === 'forgot') {
+                            $("#forgot-btn").html('Reset Password');
+                            $("#forgot-form")[0].reset();
+                            $("#forgotAlert").html(response);
                         } else {
-                            $("#loginAlert").html(response);
-                            $("#login-btn").html('Login');
+                            $("#forgotAlert").html(response);
+                            $("#forgot-btn").html('Reset Password');
                         }
                     }
                 });

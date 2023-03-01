@@ -39,5 +39,15 @@ class Auth extends Database{
 
         return $row;
     }
+
+    //Forgot Password
+    public function forgotPassword($token, $email){
+        $sql = "UPDATE users SET token = :token, token_expire = DATE_ADD(NOW(), INTERVAL 10 MINUTE) WHERE email = :email";
+        $stmt =$this->conn->prepare($sql);
+        $stmt->execute(['token'=>$token, 'email'=>$email]);
+        $row = $stmt->fetch(PDO::FETCH_ASSOC);
+
+        return $true;
+    }
 }
 ?>

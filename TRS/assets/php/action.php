@@ -48,5 +48,10 @@
         echo $user->showMessage('danger',"User not found!");
        }
     }
+
+    //Handle Forgot Password
+    if($_SERVER["REQUEST_METHOD"] == "POST" && $_POST['action'] == 'forgot' ){
+        print_r($_POST);
+    }
     
 ?>
