@@ -25,7 +25,28 @@
 
     //Handle Login
     if($_SERVER["REQUEST_METHOD"] == "POST" && $_POST['action'] == 'login' ){
-        echo $user->showMessage('danger','Something went wrong! try again later!');
+        
+        $email = $user->check_input($_POST['email']);
+        $pass = $user->check_input($_POST['password']);
+
+        $loggedInUser = $user->login($email);
+       if($loggedInUser != null){
+        if(password_verify($pass, $loggedInUser['password'])){
+            if(!empty($_POST['rem'])){
+                setcookie("email", $email, time()+(30*24*60), '/');
+                setcookie("pass", $pass, time()+(30*24*60), '/');
+            }else{
+                setcookie("email","",1, '/');
+                setcookie("pass","",1, '/');
+            }
+            echo 'login';
+            $_SERVER['user'] = $email;
+        }else{
+            echo $user->showMessage('danger','Password is incorrect!');
+        }
+       }else{
+        echo $user->showMessage('danger',"User not found!");
+       }
     }
     
 ?>

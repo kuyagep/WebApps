@@ -93,7 +93,7 @@
                                                 <span class="input-group-text"><i class="ni ni-email-83"></i></span>
                                             </div>
                                             <input class="form-control" placeholder="Email" type="email" id="email"
-                                                name="email">
+                                                name="email" required>
                                         </div>
                                     </div>
                                     <div class="form-group">
@@ -103,7 +103,7 @@
                                                         class="ni ni-lock-circle-open"></i></span>
                                             </div>
                                             <input class="form-control" placeholder="Password" type="password"
-                                                name="password" id="password">
+                                                name="password" id="password" required>
                                         </div>
 
                                     </div>
@@ -274,7 +274,7 @@
                         </div>
                     </div>
                 </div>
-                
+
             </div>
             <!-- Page content -->
             <div class="container mt--9 pb-5 text-gray">
@@ -418,7 +418,7 @@
             e.preventDefault();
             var email = $("#email").val();
             var password = $("#password").val();
-            console.log(email);
+
             $("#login-btn").html(
                 '<img src="dashboard/assets/img/loading/loading.gif"/> &nbsp; Please wait...');
 
@@ -438,13 +438,11 @@
                         $("#login-btn").html('Login');
 
                         if (response === 'login') {
-                            $("#login-btn").html(
-                                '<img src="dashboard/assets/img/loading/loading.gif"/> &nbsp; Please wait...'
-                            );
-                            setTimeout(' window.location.href = "home.php"; ',
-                                2000);
+                            $("#login-btn").html('<img src="dashboard/assets/img/loading/loading.gif"/> &nbsp; Please wait...');
+                            setTimeout(' window.location.href = "home.php"; ', 2000);
                         } else {
                             $("#loginAlert").html(response);
+                            $("#login-btn").html('Login');
                         }
                     }
                 });
