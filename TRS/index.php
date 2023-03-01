@@ -34,10 +34,7 @@
     <!-- Front CSS -->
     <link type="text/css" href="./front/css/front.css" rel="stylesheet">
 
-    <!-- Loaders -->
-    <script src="./assets/single-loaders/script/main.js"></script>
-    <script src="./assets/single-loaders/script/modernizr-2.8.2.js"></script>
-    <link rel="stylesheet" href="./assets/single-loaders/css/load1.css">
+
     <style>
     .form-bg {
         background-color: #161B22;
@@ -88,7 +85,7 @@
                                 <div class="text-center text-white mb-4">
                                     <small>Please enter your Email and Password.</small>
                                 </div>
-                                <form role="form" method="post" id="login-form" action="#">
+                                <form role="form" id="login-form">
                                     <div id="loginAlert"></div>
                                     <div class="form-group mb-3">
                                         <div class="input-group input-group-merge input-group-alternative">
@@ -147,7 +144,7 @@
         <!-- Login Form End  -->
 
         <!-- Register Form  -->
-        <div id="register-box " style="display: none;">
+        <div id="register-box" style="display: none;">
             <!-- Header -->
             <div class="header  py-8 py-lg-9 pt-lg-3">
                 <div class="container">
@@ -277,12 +274,7 @@
                         </div>
                     </div>
                 </div>
-                <!-- <div class="separator separator-bottom separator-skew zindex-100">
-                    <svg x="0" y="0" viewBox="0 0 2560 100" preserveAspectRatio="none" version="1.1"
-                        xmlns="http://www.w3.org/2000/svg">
-                        <polygon class="fill-white" points="2560 0 2560 100 0 100"></polygon>
-                    </svg>
-                </div> -->
+                
             </div>
             <!-- Page content -->
             <div class="container mt--9 pb-5 text-gray">
@@ -346,7 +338,7 @@
     <script src="./vendor/smooth-scroll/dist/smooth-scroll.polyfills.min.js"></script>
 
     <!-- Place this tag in your head or just before your close body tag. -->
-    <!-- <script async defer src="https://buttons.github.io/buttons.js"></script> -->
+    <script async defer src="https://buttons.github.io/buttons.js"></script>
 
     <!-- Impact JS -->
     <script src="./front/assets/js/front.js"></script>
@@ -374,7 +366,7 @@
 
         //Register Ajax Request
         $("#register-btn").click(function(e) {
-            if ($("#login-form")[0].checkValidity()) {
+            if ($("#register-form")[0].checkValidity()) {
                 e.preventDefault();
 
                 var name = $("#name").val();
@@ -389,7 +381,7 @@
                     $("#regAlert").html(
                         '<div class="alert alert-danger"><strong>All fields are required!</strong></div>'
                     );
-                    exit();
+
                 } else {
                     if ($("#rpassword").val() != $("#cpassword").val()) {
                         $("#passError").text("* Password did not matched!");
@@ -410,7 +402,7 @@
                                         '<img src="dashboard/assets/img/loading/loading.gif"/> &nbsp; Please wait...'
                                     );
                                     setTimeout(' window.location.href = "home.php"; ',
-                                    2000);
+                                        2000);
                                 } else {
                                     $("#regAlert").html(response);
                                 }
@@ -422,44 +414,43 @@
         });
 
         //Login Ajax Request
-        $("#login-btn").click(function(e)) {
-            if ($("#login-form")[0].checkValidity()) {
-                e.preventDefault();
-                var email = $("#email").val();
-                var password = $("#password").val();
+        $("#login-btn").click(function(e) {
+            e.preventDefault();
+            var email = $("#email").val();
+            var password = $("#password").val();
+            console.log(email);
+            $("#login-btn").html(
+                '<img src="dashboard/assets/img/loading/loading.gif"/> &nbsp; Please wait...');
 
-                $("#login-btn").html('<img src="dashboard/assets/img/loading/loading.gif"/> &nbsp; Please wait...');
+            if (email === '' && password === '') {
+                $("#login-btn").html('Login');
+                $("#loginAlert").html(
+                    '<div class="alert alert-danger"><strong>All fields are required!</strong></div>'
+                );
 
-                if(email === '' && password === '' ){
-                    $("#login-btn").html('Login');
-                    $("#loginAlert").html(
-                        '<div class="alert alert-danger"><strong>All fields are required!</strong></div>'
-                    );
-                    exit();
-                }else{
-                    $.ajax({
-                            url: 'assets/php/action.php',
-                            method: 'post',
-                            data: $("#login-form").serialize() + '&action=login',
-                            success: function(response) {
+            } else {
+                $.ajax({
+                    url: 'assets/php/action.php',
+                    method: 'post',
+                    data: $("#login-form").serialize() + '&action=login',
+                    success: function(response) {
 
-                                $("#login-btn").html('Login');
+                        $("#login-btn").html('Login');
 
-                                if (response === 'login') {
-                                    $("#login-btn").html(
-                                        '<img src="dashboard/assets/img/loading/loading.gif"/> &nbsp; Please wait...'
-                                    );
-                                    setTimeout(' window.location.href = "home.php"; ',
-                                    2000);
-                                } else {
-                                    $("#loginAlert").html(response);
-                                }
-                            }
-                        });
-                }
-
+                        if (response === 'login') {
+                            $("#login-btn").html(
+                                '<img src="dashboard/assets/img/loading/loading.gif"/> &nbsp; Please wait...'
+                            );
+                            setTimeout(' window.location.href = "home.php"; ',
+                                2000);
+                        } else {
+                            $("#loginAlert").html(response);
+                        }
+                    }
+                });
             }
-        }
+
+        });
 
     });
     </script>
