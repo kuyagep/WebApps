@@ -33,6 +33,11 @@
 
     <!-- Front CSS -->
     <link type="text/css" href="./front/css/front.css" rel="stylesheet">
+
+    <!-- Loaders -->
+    <script src="./assets/single-loaders/script/main.js"></script>
+    <script src="./assets/single-loaders/script/modernizr-2.8.2.js"></script>
+    <link rel="stylesheet" href="./assets/single-loaders/css/load1.css">
     <style>
     .form-bg {
         background-color: #161B22;
@@ -134,6 +139,7 @@
                                     </div>
                                     <hr class="my-4">
                                     <div class="text-center">
+
                                         <button type="button"
                                             class="w-100 mb-2 btn btn-lg  btn-success  animate-up-2 text-white"
                                             id="register-link"> <i
@@ -152,7 +158,7 @@
         <!-- Login Form End  -->
 
         <!-- Register Form  -->
-        <div id="register-box" >
+        <div id="register-box">
             <!-- Header -->
             <div class="header  py-8 py-lg-9 pt-lg-3">
                 <div class="container">
@@ -184,7 +190,7 @@
                                 <div class="text-center text-muted mb-4 text-white">
                                     <small>Sign up with credentials</small>
                                 </div>
-                                <form role="form" id="register-form" >
+                                <form role="form" id="register-form">
                                     <div id="regAlert"></div>
                                     <div class="form-group">
                                         <div class="input-group input-group-merge input-group-alternative mb-3">
@@ -243,18 +249,19 @@
                                         </div>
                                     </div>
                                     <div class="text-center">
-                                        
-                                            <button type="button" class="w-100 mb-2 btn btn-lg rounded-3 btn-primary mt-4"
-                                             id="register-btn">Register</button>
+
+
+                                        <button type="button" class="w-100 mb-2 btn btn-lg rounded-3 btn-primary mt-4"
+                                            id="register-btn"> Register</button>
 
                                     </div>
                                     <hr class="my-4">
 
                                 </form>
                                 <div class="text-center">
-                                    <button type="button"
-                                        class="w-100 mb-2 btn btn-lg  btn-success  animate-up-2 text-white"
-                                        id="login-link"> <i class="fas fa-sign-in-alt mr-2 "></i>Login</button>
+                                    <button type="button" class="w-100 mb-2 btn btn-lg btn-success rounded-3 text-white"
+                                        id="login-link">
+                                        <i class="fas fa-sign-in-alt mr-2 "></i>Login</button>
                                     <!-- <button type="button" class="btn btn-primary my-4" id="login-btn"> <i
                                                 class="fas fa-sign-in-alt mr-2"></i>Sign
                                             in</button> -->
@@ -352,7 +359,7 @@
     <script src="./vendor/smooth-scroll/dist/smooth-scroll.polyfills.min.js"></script>
 
     <!-- Place this tag in your head or just before your close body tag. -->
-    <script async defer src="https://buttons.github.io/buttons.js"></script>
+    <!-- <script async defer src="https://buttons.github.io/buttons.js"></script> -->
 
     <!-- Impact JS -->
     <script src="./front/assets/js/front.js"></script>
@@ -388,7 +395,7 @@
         //             $("#passError").text("* Password did not matched!");
         //             $("#register-btn").val('Register');
         //         } else {
-                    
+
         //             $("#passError").text("");
         //             $.ajax({
         //                 url: 'assets/php/action.php',
@@ -410,41 +417,48 @@
         $("#register-btn").click(function(e) {
             e.preventDefault();
 
-            var name = $('#name').val();
-            var email = $('#email').val();
-            var rpassword = $('#rpassword').val();
-            var cpassword = $('#cpassword').val();
+            var name = $("#name").val();
+            var remail = $("#remail").val();
+            var rpassword = $("#rpassword").val();
+            var cpassword = $("#cpassword").val();
+            $("#register-btn").html(
+                '<img src="dashboard/assets/img/loading/loading.gif"/> &nbsp; Please wait...');
 
-            $("#register-btn").html('<img src="dashboard/assets/img/loading/loading.gif" /> &nbsp; Signing In ...');
-            
-            if (name === '' || email === '' || rpassword === '' || cpassword === '' ) {
-                $("#regAlert").html('<div class="alert alert-danger">All fields are required!</div>');
-                //  $("#register-btn").val('Register');
+            if (name === '' || remail === '' || rpassword === '' || cpassword === '') {
+                $("#register-btn").html('Register');
+                $("#regAlert").html(
+                    '<div class="alert alert-danger"><strong>All fields are required!</strong></div>'
+                );
+                exit();
             } else {
-                
+                if ($("#rpassword").val() != $("#cpassword").val()) {
+                    $("#passError").text("* Password did not matched!");
+                    $("#register-btn").val('Register');
+                } else {
+
+                    $("#passError").text("");
+                    $.ajax({
+                        url: 'assets/php/action.php',
+                        method: 'post',
+                        data: {
+                                name: name,
+                                email: remail,
+                                pass: rpassword
+                        },
+                        success: function(response) {
+                            $("#register-btn").val('Register');
+                            console.log(response);
+                            if (response === 'register') {
+                                window.location = 'home.php';
+                            } else {
+                                $("#regAlert").html(response);
+                            }
+                        }
+                    });
+                }
             }
-            if ($("#rpassword").val() != $("#cpassword").val()) {
-                $("#passError").text("* Password did not matched!");
-                $("#register-btn").val('Register');
-            } else {
-                
-                $("#passError").text("");
-                // $.ajax({
-                //     url: 'assets/php/action.php',
-                //     method: 'post',
-                //     data: $("#register-form").serialize() + '&action=register',
-                //     success: function(response) {
-                //         $("#register-btn").val('Register');
-                //         console.log(response);
-                //         if (response === 'register') {
-                //             window.location = 'home.php';
-                //         } else {
-                //             $("#regAlert").html(response);
-                //         }
-                //     }
-                // });
-            }
-            
+
+
         });
 
     });
