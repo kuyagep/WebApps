@@ -122,7 +122,8 @@
                                         <div class="col-6">
                                             <div class="custom-control custom-control-alternative custom-checkbox">
                                                 <input class="custom-control-input" id="customCheckLogin"
-                                                    type="checkbox" value="remember_me" name="rem" <?php if(isset($_COOKIE['email'])){ echo 'checked';}  ?>>
+                                                    type="checkbox" value="remember_me" name="rem"
+                                                    <?php if(isset($_COOKIE['email'])){ echo 'checked';}  ?>>
                                                 <label class="text-white custom-control-label" for="customCheckLogin">
                                                     <span>Remember me</span>
                                                 </label>
@@ -297,7 +298,7 @@
                                     <small>To reset your password, enter the registered email address and we will send
                                         you the reset instruction on your email!</small>
                                 </div>
-                                <form role="form">
+                                <form role="form" id="forgot-form" method="post">
                                     <div class="form-group mb-3">
                                         <div class="input-group input-group-merge input-group-alternative">
                                             <div class="input-group-prepend">
@@ -308,7 +309,7 @@
                                         </div>
                                     </div>
                                     <div class="text-center ">
-                                        <button type="button " id="forgot-btn"
+                                        <button type="submit" id="forgot-btn"
                                             class="w-100 mb-2 btn btn-lg btn-primary mt-4">Reset
                                             Password</button>
                                     </div>
@@ -390,7 +391,7 @@
                 if (name === '' || remail === '' || rpassword === '' || cpassword === '') {
                     $("#register-btn").html('Register');
                     $("#regAlert").html(
-                        '<div class="alert alert-danger"><strong>All fields are required!</strong></div>'
+                        '<div class="alert alert-danger alert-dismissible"><button type="button" class="close" data-dismiss="alert">&times;</button><strong>All fields are required!</strong></div>'
                     );
 
                 } else {
@@ -432,11 +433,10 @@
 
             $("#login-btn").html(
                 '<img src="dashboard/assets/img/loading/loading.gif"/> &nbsp; Please wait...');
-
             if (email === '' && password === '') {
                 $("#login-btn").html('Login');
                 $("#loginAlert").html(
-                    '<div class="alert alert-danger"><strong>All fields are required!</strong></div>'
+                    '<div class="alert alert-danger alert-dismissible"><button type="button" class="close" data-dismiss="alert">&times;</button><strong>All fields are required!</strong></div>'
                 );
 
             } else {
@@ -449,7 +449,9 @@
                         $("#login-btn").html('Login');
 
                         if (response === 'login') {
-                            $("#login-btn").html('<img src="dashboard/assets/img/loading/loading.gif"/> &nbsp; Please wait...');
+                            $("#login-btn").html(
+                                '<img src="dashboard/assets/img/loading/loading.gif"/> &nbsp; Please wait...'
+                                );
                             setTimeout(' window.location.href = "home.php"; ', 2000);
                         } else {
                             $("#loginAlert").html(response);
@@ -459,6 +461,35 @@
                 });
             }
 
+        });
+
+        //Forgot Password
+        $("#forgot-btn").click(function(e){
+            if ($("#forgot-form")[0].checkValidity()) {
+                e.preventDefault();
+
+                $("#forgot-btn").html(
+                '<img src="dashboard/assets/img/loading/loading.gif"/> &nbsp; Please wait...');
+                $.ajax({
+                    url: 'assets/php/action.php',
+                    method: 'post',
+                    data: $("#forgot-form").serialize() + '&action=forgot',
+                    success: function(response) {
+
+                        $("#login-btn").html('Login');
+
+                        if (response === 'login') {
+                            $("#login-btn").html(
+                                '<img src="dashboard/assets/img/loading/loading.gif"/> &nbsp; Please wait...'
+                                );
+                            setTimeout(' window.location.href = "home.php"; ', 2000);
+                        } else {
+                            $("#loginAlert").html(response);
+                            $("#login-btn").html('Login');
+                        }
+                    }
+                });
+            }
         });
 
     });
