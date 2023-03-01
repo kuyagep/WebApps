@@ -39,8 +39,8 @@
                 setcookie("email","",1, '/');
                 setcookie("pass","",1, '/');
             }
+            $_SESSION['user'] = $email;
             echo 'login';
-            $_SERVER['user'] = $email;
         }else{
             echo $user->showMessage('danger','Password is incorrect!');
         }

@@ -29,5 +29,15 @@ class Auth extends Database{
         
         return $row;
     }
+
+    //Current User Details
+    public function currentUser($email){
+        $sql = "SELECT * FROM users WHERE email = :email AND deleted != 0";
+        $stmt =$this->conn->prepare($sql);
+        $stmt->execute(['email'=>$email]);
+        $row = $stmt->fetch(PDO::FETCH_ASSOC);
+
+        return $row;
+    }
 }
 ?>

@@ -93,7 +93,9 @@
                                                 <span class="input-group-text"><i class="ni ni-email-83"></i></span>
                                             </div>
                                             <input class="form-control" placeholder="Email" type="email" id="email"
-                                                name="email" required>
+                                                name="email" required value="<?php if (isset($_COOKIE['email'])){
+                                                    echo $_COOKIE['email'];
+                                                } ?>">
                                         </div>
                                     </div>
                                     <div class="form-group">
@@ -103,7 +105,9 @@
                                                         class="ni ni-lock-circle-open"></i></span>
                                             </div>
                                             <input class="form-control" placeholder="Password" type="password"
-                                                name="password" id="password" required>
+                                                name="password" id="password" required value="<?php if (isset($_COOKIE['pass'])){
+                                                    echo $_COOKIE['pass'];
+                                                } ?>">
                                         </div>
 
                                     </div>
@@ -111,7 +115,7 @@
                                         <div class="col-6">
                                             <div class="custom-control custom-control-alternative custom-checkbox">
                                                 <input class="custom-control-input" id="customCheckLogin"
-                                                    type="checkbox" value="remember_me" name="rem">
+                                                    type="checkbox" value="remember_me" name="rem" <?php if(isset($_COOKIE['email'])){ echo 'checked';}  ?>>
                                                 <label class="text-white custom-control-label" for="customCheckLogin">
                                                     <span>Remember me</span>
                                                 </label>
