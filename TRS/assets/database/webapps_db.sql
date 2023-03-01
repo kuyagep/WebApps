@@ -3,9 +3,9 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Feb 28, 2023 at 06:46 AM
--- Server version: 10.4.24-MariaDB
--- PHP Version: 8.1.6
+-- Generation Time: Mar 01, 2023 at 10:03 AM
+-- Server version: 10.4.27-MariaDB
+-- PHP Version: 8.2.0
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -41,7 +41,16 @@ CREATE TABLE `users` (
   `created_at` timestamp NOT NULL DEFAULT current_timestamp(),
   `verified` tinyint(4) NOT NULL DEFAULT 0,
   `deleted` tinyint(4) NOT NULL DEFAULT 1
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `users`
+--
+
+INSERT INTO `users` (`id`, `name`, `email`, `password`, `phone`, `gender`, `dob`, `photo`, `token`, `token_expire`, `created_at`, `verified`, `deleted`) VALUES
+(2, 'Geperson', '', '$2y$10$D8fjLenaq7E1O6nrVKWBk.Wn5NJBr.JYT8F5k2AtZU5iXo7X7scia', '', '', '', '', '', '2023-02-28 08:24:27', '2023-02-28 08:24:27', 0, 1),
+(3, 'test', 'test@gmail.com', '$2y$10$FGJq5IWG9dEgCcb5t4Wd1e2uKwzgGPv6UhcwotD2kTV3XPJ6sJGg.', '', '', '', '', '', '2023-03-01 06:18:08', '2023-03-01 06:18:08', 0, 1),
+(4, 'test1', 'test1@gmail.com', '$2y$10$.xCNoqfYu4g0McWGg0npGu4jeo0c8qsgh.ZzE/7l3VCGFHn7uAXRm', '', '', '', '', '', '2023-03-01 06:25:20', '2023-03-01 06:25:20', 0, 1);
 
 --
 -- Indexes for dumped tables
@@ -61,7 +70,7 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
