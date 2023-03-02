@@ -411,11 +411,13 @@
                                 $("#register-btn").val('Register');
 
                                 if (response === 'register') {
+                                    $("#regAlert").html(
+                                        '<div class="alert alert-success alert-dismissible"><button type="button" class="close" data-dismiss="alert">&times;</button><strong>Registered Successfully!</strong></div>'
+                                    );
                                     $("#register-btn").html(
                                         '<img src="dashboard/assets/img/loading/loading.gif"/> &nbsp; Please wait...'
                                     );
-                                    setTimeout(' window.location.href = "home.php"; ',
-                                        2000);
+                                    setTimeout(' window.location.href = "index.php"; ', 2000);
                                 } else {
                                     $("#regAlert").html(response);
                                 }
@@ -453,7 +455,7 @@
                             $("#login-btn").html(
                                 '<img src="dashboard/assets/img/loading/loading.gif"/> &nbsp; Please wait...'
                                 );
-                            setTimeout(' window.location.href = "home.php"; ', 2000);
+                            setTimeout(' window.location.href = "dashboard/"; ', 2000);
                         } else {
                             $("#loginAlert").html(response);
                             $("#login-btn").html('Login');
